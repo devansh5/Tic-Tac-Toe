@@ -4,7 +4,7 @@ import createBoard from '../utils/createBoard';
 import revealWinner from '../utils/revealWinner';
 import randomIndex from '../utils/randomIndex';
 import './Styles.css';
-let score={'X':0,'O':0}
+let score = { 'X': 0, 'O': 0 }
 export default function Board() {
     const [board, setBoard] = useState([]);
     const [xnext, setxNext] = useState(true);
@@ -18,11 +18,11 @@ export default function Board() {
     const winner = revealWinner(board);
     let status;
     if (winner) {
-        score[winner]+=1;
+        score[winner] += 1;
         status = winner === 'X' ? 'You won' : 'Computer Won';
-    }else if(turn<9) {
+    } else if (turn < 9) {
         status = (xnext ? "Your Turn" : "Computer's Turn");
-    } else if (turn===9){
+    } else if (turn === 9) {
         status = 'Match Tie';
     }
 
@@ -37,18 +37,18 @@ export default function Board() {
             newBoard[index] = xnext ? 'X' : 'O';
             return newBoard;
         });
-        if(turn<9){
+        if (turn < 9) {
             setnextMove(players.human);
-            setTotalTurn(turn+1);
+            setTotalTurn(turn + 1);
         }
-        
+
 
 
     }
 
     useEffect(() => {
         let timeout;
-        if (nextmove !== null && nextmove === players.computer && winner === null && turn !==9 ) {
+        if (nextmove !== null && nextmove === players.computer && winner === null && turn !== 9) {
             timeout = setTimeout(() => {
                 computerMove();
             }, 500);
@@ -57,7 +57,7 @@ export default function Board() {
     }, [nextmove]);
 
 
-    const handleRefresh=()=>{
+    const handleRefresh = () => {
         const newBoard = createBoard();
         setBoard(newBoard);
         setTotalTurn(0);
@@ -70,7 +70,7 @@ export default function Board() {
     }, []);
 
     const humanPlayerMove = (index) => {
-        if (board[index] || revealWinner(board) || nextmove===players.computer) {
+        if (board[index] || revealWinner(board) || nextmove === players.computer) {
             return;
         }
         setxNext(!xnext);
@@ -79,35 +79,35 @@ export default function Board() {
             newBoard[index] = xnext ? 'X' : 'O';
             return newBoard;
         });
-        if(turn<9){
+        if (turn < 9) {
             setnextMove(players.computer);
-            setTotalTurn(turn+1);   
+            setTotalTurn(turn + 1);
         }
-        
+
     }
 
 
     return (
         <div>
             <div className="player">
-                
-                {status} 
 
-                
+                {status}
+
+
 
                 <button className="btn" onClick={handleRefresh} >Restart</button>
-            
+
             </div>
             <div className="score">
-                   <span>
+                <span>
                     Your Score : {score['X']}
-                   </span>
-                   <span>
+                </span>
+                <span>
                     Computer Score : {score['O']}
-                   </span>
-                    
+                </span>
+
             </div>
-            
+
             <div className="display-flex">
                 {
                     board.map((grid, index) => {
