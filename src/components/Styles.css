@@ -1,0 +1,83 @@
+.display-flex{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 450px;
+}
+
+.full-width{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: rgb(226, 245, 248);
+}
+
+.square{
+    width:140px;
+    height:140px;
+    background-color: rgb(3, 1, 12);
+    border-radius: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    margin: 1px;
+    color: white;
+}
+
+.player{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 20px;
+    font-size: 40px;
+    text-align: center;
+}
+
+.btn{
+    color: white;
+    background: black;
+    width: 100px;
+    height: 40px;
+    border-radius: 20%;
+}
+
+.score {
+    font-size: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 15px;
+}
+
+.game-info{
+    display: flex;
+    justify-content: center;
+}
+.info{
+    margin: 7px;
+    font-size: 20px;
+}
+
+@media(max-width:450px){
+    .display-flex{
+        width:300px;
+    }
+    .square{
+        width: 90px;
+        height: 90px;
+    }
+    .score{
+        align-items: center;
+        flex-direction: column;
+    }
+    .player{
+        font-size: 25px;
+    }
+    .btn{
+        margin: 10px;
+    }
+}
